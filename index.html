@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Health Risk Calculator</h1>
+        <form id="health-form">
+            <label>Height (cm): <input type="number" id="height" required></label>
+            <label>Weight (kg): <input type="number" id="weight" required></label>
+            <label>Systolic BP: <input type="number" id="systolic" required></label>
+            <label>Diastolic BP: <input type="number" id="diastolic" required></label>
+            <label>Age: <input type="number" id="age" required></label>
+            <label>Family History: 
+                <select id="family-history" multiple>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="cancer">Cancer</option>
+                    <option value="alzheimers">Alzheimer’s</option>
+                </select>
+            </label>
+            <button type="submit">Calculate Risk</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
