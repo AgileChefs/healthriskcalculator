@@ -9,7 +9,7 @@ document.getElementById("health-form").addEventListener("submit", async function
     
     const familyHistory = Array.from(document.getElementById("family-history").selectedOptions).map(option => option.value);
 
-    const response = await fetch("http://localhost:3000/calculate-risk", {
+    const response = await fetch("https://health-risk-calculator.azurewebsites.net/calculate-risk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ height, weight, systolic, diastolic, age, familyHistory })
