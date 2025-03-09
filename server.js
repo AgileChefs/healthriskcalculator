@@ -47,5 +47,5 @@ app.post("/calculate-risk", (req, res) => {
     res.json({ bmi, bmiCategory, bpCategory, totalScore, riskLevel,highRisk });
 });
 
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
