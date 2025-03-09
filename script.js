@@ -23,10 +23,10 @@ document.getElementById("health-form").addEventListener("submit", async function
         <p><strong>Risk Level:</strong> ${result.riskLevel}</p>
     `;
     const submitBtn = document.getElementById("submit-btn");
-    if (data.highRisk) {
-        submitBtn.classList.add("high-risk");
+    if (result.highRisk) {
+        submitBtn.style.backgroundColor = "red";  // High risk → Red button
     } else {
-        submitBtn.classList.remove("high-risk");
+        submitBtn.style.backgroundColor = "green"; // Low risk → Green button
     }
 
 });

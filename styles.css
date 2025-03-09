@@ -76,7 +76,4 @@ input:focus {
     to { transform: translateY(0); }
 }
 
-/* Red Button for High Risk */
-.high-risk {
-    background: #ff4081 !important;
-}
+
