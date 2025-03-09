@@ -11,19 +11,19 @@ app.post("/calculate-risk", (req, res) => {
 
     // Calculate BMI
     const bmi = weight / ((height / 100) ** 2);
-    let bmiCategory, bmiPoints;
+    let bmiCategory, bmiPoints, highRisk=False;
     if (bmi < 18.5) { bmiCategory = "Underweight"; bmiPoints = 10; }
     else if (bmi < 25) { bmiCategory = "Normal"; bmiPoints = 0; }
     else if (bmi < 30) { bmiCategory = "Overweight"; bmiPoints = 30; }
-    else { bmiCategory = "Obese"; bmiPoints = 75; }
+    else { bmiCategory = "Obese"; bmiPoints = 75;highRisk=True; }
 
     // Calculate Blood Pressure Category
     let bpCategory, bpPoints;
     if (systolic < 120 && diastolic < 80) { bpCategory = "Normal"; bpPoints = 0; }
-    else if (systolic < 130 && diastolic < 80) { bpCategory = "Elevated"; bpPoints = 15; }
+    else if (systolic < 130 && diastolic < 80) { bpCategory = "Elevated"; bpPoints = 15;}
     else if (systolic < 140 || diastolic < 90) { bpCategory = "Hypertension Stage 1"; bpPoints = 30; }
-    else if (systolic < 180 || diastolic < 120) { bpCategory = "Hypertension Stage 2"; bpPoints = 75; }
-    else { bpCategory = "Hypertensive Crisis"; bpPoints = 100; }
+    else if (systolic < 180 || diastolic < 120) { bpCategory = "Hypertension Stage 2"; bpPoints = 75;highRisk=True; }
+    else { bpCategory = "Hypertensive Crisis"; bpPoints = 100; highRisk=True;}
 
     // Age Points
     let agePoints = age < 30 ? 0 : age < 45 ? 10 : age < 60 ? 20 : 30;
@@ -44,7 +44,7 @@ app.post("/calculate-risk", (req, res) => {
     else if (totalScore <= 75) riskLevel = "High";
     else riskLevel = "Uninsurable";
 
-    res.json({ bmi, bmiCategory, bpCategory, totalScore, riskLevel });
+    res.json({ bmi, bmiCategory, bpCategory, totalScore, riskLevel,highRisk });
 });
 
 const PORT = 3000;

@@ -9,7 +9,7 @@ document.getElementById("health-form").addEventListener("submit", async function
     
     const familyHistory = Array.from(document.getElementById("family-history").selectedOptions).map(option => option.value);
 
-    const response = await fetch("http://localhost:3000/calculate-risk", {
+    const response = await fetch("https://health-risk-calculator.azurewebsites.net/calculate-risk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ height, weight, systolic, diastolic, age, familyHistory })
@@ -22,4 +22,11 @@ document.getElementById("health-form").addEventListener("submit", async function
         <p><strong>Total Risk Score:</strong> ${result.totalScore}</p>
         <p><strong>Risk Level:</strong> ${result.riskLevel}</p>
     `;
+    const submitBtn = document.getElementById("submit-btn");
+    if (data.highRisk) {
+        submitBtn.classList.add("high-risk");
+    } else {
+        submitBtn.classList.remove("high-risk");
+    }
+
 });

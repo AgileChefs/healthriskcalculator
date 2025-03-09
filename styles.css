@@ -1,34 +1,82 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    background: linear-gradient(135deg, #00fbe2, #08922f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .container {
-    max-width: 400px;
-    margin: auto;
+    background: white;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 label {
-    margin: 10px 0;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
 }
 
-button {
-    margin-top: 10px;
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #ff4081;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(255, 64, 129, 0.5);
+}
+
+#submit-btn {
+    width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #4CAF50;
     color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
 }
 
-button:hover {
-    background-color: #218838;
+#submit-btn:hover {
+    background: #023f0e;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+/* Red Button for High Risk */
+.high-risk {
+    background: #ff4081 !important;
 }
