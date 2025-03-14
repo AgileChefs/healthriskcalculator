@@ -61,6 +61,12 @@ input:focus {
     transition: background 0.3s, transform 0.2s;
 }
 
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+
+
+}
 #submit-btn:hover {
     background: #023f0e;
     transform: scale(1.05);

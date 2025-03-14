@@ -14,14 +14,22 @@ document.getElementById("health-form").addEventListener("submit", async function
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ height, weight, systolic, diastolic, age, familyHistory })
     });
-
     const result = await response.json();
-    document.getElementById("result").innerHTML = `
+    if (!response.ok) {
+        document.getElementById("errorMessage").textContent = `Error: ${result.error}`;
+        document.getElementById("result").textContent = "";
+        return;
+    }
+    else{
+        document.getElementById("result").innerHTML = `
         <p><strong>BMI:</strong> ${result.bmi.toFixed(2)} (${result.bmiCategory})</p>
         <p><strong>Blood Pressure:</strong> ${result.bpCategory}</p>
+        <p><strong>Age:</strong> ${result.age}</p>
+        <p><strong>Family Diseases:</strong> ${result.familyHistory}</p>
         <p><strong>Total Risk Score:</strong> ${result.totalScore}</p>
-        <p><strong>Risk Level:</strong> ${result.riskLevel}</p>
-    `;
+        <p><strong>Risk Level:</strong> ${result.riskLevel}</p>`;
+        document.getElementById("errorMessage").textContent = "";
+    }
     const submitBtn = document.getElementById("submit-btn");
     if (result.highRisk) {
         submitBtn.style.backgroundColor = "red";  // High risk → Red button

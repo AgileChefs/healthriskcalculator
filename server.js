@@ -9,6 +9,16 @@ app.use(express.json());
 app.post("/calculate-risk", (req, res) => {
     const { height, weight, systolic, diastolic, age, familyHistory } = req.body;
 
+    if (height < 60 || height>210) {
+        return res.status(400).json({ error: "Height must be greater than 60 cm and less than 210cm" });
+    }
+
+    if (weight<0 || weight>250){
+      return res.status(400).json({ error: "Height must be greater than 60 cm and less than 210cm" });
+    }
+    if (age <= 0 || age > 120) {
+        return res.status(400).json({ error: "Age must be between 1 and 120 years." });
+    }
     // Calculate BMI
     const bmi = weight / ((height / 100) ** 2);
     let bmiCategory, bmiPoints; highRisk=false;
@@ -44,8 +54,8 @@ app.post("/calculate-risk", (req, res) => {
     else if (totalScore <= 75) riskLevel = "High";
     else riskLevel = "Uninsurable";
 
-    res.json({ bmi, bmiCategory, bpCategory, totalScore, riskLevel, highRisk});
+    res.json({ bmi, bmiCategory, bpCategory, totalScore, riskLevel, highRisk,age,familyHistory});
 });
 
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
