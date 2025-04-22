@@ -3,5 +3,5 @@ Maaz Ahmad b00091247@aus.edu\
 Mohammed Adnan b00089025@aus.edu\
 Ahmed Tarek b00091962@aus.edu
 
-Static website https://dicefrontend.z1.web.core.windows.net/](https://healthfrontend.z1.web.core.windows.net/
+Static website https://healthfrontend.z1.web.core.windows.net/
 
